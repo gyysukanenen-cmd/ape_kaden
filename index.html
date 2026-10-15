@@ -268,13 +268,16 @@ function jawab1(benar) {
   const hasil = document.getElementById("hasil1");
 
   if (benar) {
-    hasil.innerHTML = "BENAR! 🥳 Pinter juga kamu. Lanjut!";
-    setTimeout(() => pindah(3), 1200);
+    hasil.innerHTML = "BENAR! 🥳 Pinter juga lu. Lanjut ke Level 2!";
+
+    setTimeout(function() {
+      pindah(3);
+    }, 1200);
+
   } else {
     hasil.innerHTML = "WKWKWK SALAH 😭 Coba lagi!";
   }
-}
-
+  }
 function pesan() {
   document.getElementById("hasil2").innerHTML =
     "WKWKWK udah dibilang jangan ditekan 😭";
