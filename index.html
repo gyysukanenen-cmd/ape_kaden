@@ -3,153 +3,486 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Birthday Khania!</title>
+<title>Happy Birthday Khania 🎀</title>
 
 <style>
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+:root {
+    --pink: #ff8fb8;
+    --dark-pink: #e85d93;
+    --light-pink: #ffe5ef;
+    --soft-pink: #fff5f9;
+    --purple: #c8b6ff;
+    --text: #794b65;
 }
 
 body {
-  margin: 0;
-  min-height: 100vh;
-  font-family: 'Trebuchet MS', sans-serif;
-  background: linear-gradient(135deg, #ffafbd, #ffc3a0, #d5aaff);
-  background-size: 300% 300%;
-  animation: warna 10s ease infinite;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-  overflow-x: hidden;
+    margin: 0;
+    min-height: 100vh;
+    padding: 20px 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Trebuchet MS", Arial, sans-serif;
+    color: var(--text);
+    background:
+        radial-gradient(circle at 10% 15%, #fff 0 4px, transparent 5px),
+        radial-gradient(circle at 85% 20%, #ffd9e8 0 6px, transparent 7px),
+        linear-gradient(135deg, #ffe7f0, #f5e8ff, #fff2e8);
+    background-size: 70px 70px, 100px 100px, 100% 100%;
+    overflow-x: hidden;
 }
 
-@keyframes warna {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
+/* KARTU UTAMA */
 
 .card {
-  width: 100%;
-  max-width: 420px;
-  background: rgba(255,255,255,0.92);
-  border-radius: 28px;
-  padding: 28px 22px;
-  text-align: center;
-  box-shadow: 0 15px 45px rgba(100,40,100,0.2);
-  animation: muncul 0.7s ease;
-  position: relative;
-  z-index: 2;
+    width: 100%;
+    max-width: 430px;
+    min-height: 560px;
+    padding: 28px 20px;
+    border-radius: 30px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.93);
+    border: 3px solid white;
+    box-shadow: 0 12px 35px rgba(221, 117, 163, 0.2);
+    animation: cardMasuk 0.7s ease;
 }
 
-@keyframes muncul {
-  from { opacity: 0; transform: translateY(25px); }
-  to { opacity: 1; transform: translateY(0); }
+.card::before {
+    content: "♡";
+    position: absolute;
+    top: 8px;
+    left: 15px;
+    color: #ffc1d8;
+    font-size: 30px;
+}
+
+.card::after {
+    content: "♡";
+    position: absolute;
+    right: 15px;
+    bottom: 8px;
+    color: #ffc1d8;
+    font-size: 30px;
+}
+
+.page {
+    display: none;
+    animation: halamanMasuk 0.5s ease;
+}
+
+.page.active {
+    display: block;
 }
 
 h1 {
-  color: #e75480;
-  font-size: 29px;
-  margin-bottom: 8px;
+    color: var(--dark-pink);
+    font-size: 27px;
+    margin: 12px 0;
 }
 
 h2 {
-  color: #a64ac9;
+    color: var(--dark-pink);
+    font-size: 22px;
 }
 
 p {
-  color: #555;
-  line-height: 1.7;
-  font-size: 15px;
-}
-
-.emoji {
-  font-size: 65px;
-  animation: goyang 2s infinite;
-}
-
-@keyframes goyang {
-  0%, 100% { transform: rotate(-8deg); }
-  50% { transform: rotate(8deg); }
-}
-
-button {
-  border: none;
-  background: linear-gradient(135deg, #ff6495, #c56cf0);
-  color: white;
-  font-size: 15px;
-  font-weight: bold;
-  padding: 13px 18px;
-  border-radius: 30px;
-  margin: 7px 3px;
-  cursor: pointer;
-  box-shadow: 0 5px 12px #e6b2d5;
-  transition: 0.2s;
-}
-
-button:active {
-  transform: scale(0.94);
-}
-
-.hidden {
-  display: none;
-}
-
-.progress {
-  height: 7px;
-  background: #f2d7eb;
-  border-radius: 10px;
-  margin-bottom: 22px;
-  overflow: hidden;
-}
-
-.bar {
-  height: 100%;
-  width: 0%;
-  background: linear-gradient(90deg, #ff6495, #b56cf0);
-  transition: 0.5s;
-}
-
-.gift {
-  font-size: 55px;
-  cursor: pointer;
-  display: inline-block;
-  margin: 8px;
-  transition: 0.2s;
-}
-
-.gift:hover {
-  transform: translateY(-8px) rotate(5deg);
+    line-height: 1.65;
+    font-size: 15px;
 }
 
 .small {
-  font-size: 12px;
-  color: #999;
+    font-size: 12px;
+    color: #b17b99;
 }
 
-.heart {
-  position: fixed;
-  bottom: -30px;
-  font-size: 22px;
-  animation: terbang 7s linear infinite;
-  opacity: 0.7;
-  z-index: 1;
-  pointer-events: none;
+.label {
+    display: inline-block;
+    padding: 7px 15px;
+    border-radius: 30px;
+    background: #ffe7f0;
+    color: #d95e91;
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 8px;
 }
 
-@keyframes terbang {
-  from { transform: translateY(0) rotate(0deg); }
-  to { transform: translateY(-115vh) rotate(360deg); }
+/* KUCING CHIBI */
+
+.cat-slot {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 8px auto 12px;
 }
 
-#surat {
-  background: #fff4fa;
-  border: 2px dashed #f1a5c8;
-  padding: 16px;
-  border-radius: 18px;
-  text-align: left;
-  white-space: pre-line;
+.cat {
+    width: 175px;
+    max-width: 65%;
+    height: auto;
+    overflow: visible;
+    animation: kucingMengambang 3s ease-in-out infinite;
+    filter: drop-shadow(0 7px 5px rgba(216, 131, 166, 0.15));
+}
+
+.cat-small {
+    width: 130px;
+}
+
+.cat-big {
+    width: 205px;
+}
+
+.cat .bow {
+    transform-origin: 142px 33px;
+    animation: pitaGoyang 2.4s ease-in-out infinite;
+}
+
+.cat .eye {
+    fill: #5e4252;
+}
+
+.cat .cheek {
+    fill: #ffb2cb;
+    opacity: 0.85;
+}
+
+.cat .mouth {
+    fill: none;
+    stroke: #87576d;
+    stroke-width: 2.5;
+    stroke-linecap: round;
+}
+
+.cat .body {
+    fill: #fff;
+    stroke: #e8cbd9;
+    stroke-width: 2;
+}
+
+/* TOMBOL */
+
+button {
+    border: none;
+    border-radius: 25px;
+    padding: 12px 20px;
+    margin: 6px 3px;
+    font-size: 14px;
+    font-weight: bold;
+    font-family: inherit;
+    color: white;
+    background: linear-gradient(135deg, #ff9fc4, #ed76a6);
+    box-shadow: 0 5px 0 #d85d90;
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 7px 0 #d85d90;
+}
+
+button:active {
+    transform: translateY(3px);
+    box-shadow: 0 2px 0 #d85d90;
+}
+
+button.secondary {
+    color: #b45b86;
+    background: #ffe8f1;
+    box-shadow: 0 5px 0 #f3c4d8;
+}
+
+button.secondary:hover {
+    box-shadow: 0 7px 0 #f3c4d8;
+}
+
+button.purple {
+    background: linear-gradient(135deg, #c7b4ff, #a994f2);
+    box-shadow: 0 5px 0 #9680db;
+}
+
+/* PROGRESS BAR */
+
+.progress-wrap {
+    width: 100%;
+    height: 9px;
+    border-radius: 20px;
+    background: #ffe8f1;
+    margin: 15px 0 20px;
+    overflow: hidden;
+}
+
+.progress {
+    width: 0%;
+    height: 100%;
+    border-radius: 20px;
+    background: linear-gradient(90deg, #ffb0cf, #e88cff);
+    transition: width 0.5s ease;
+}
+
+/* BALON */
+
+.balloons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.balloon {
+    font-size: 55px;
+    cursor: pointer;
+    transition: transform 0.2s;
+    animation: balonNaik 2s ease-in-out infinite;
+}
+
+.balloon:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+.balloon:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+.balloon:hover {
+    transform: scale(1.15) rotate(8deg);
+}
+
+/* HADIAH */
+
+.gifts {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 25px 0;
+}
+
+.gift {
+    width: 85px;
+    height: 95px;
+    border-radius: 18px;
+    border: 2px solid #ffe1ec;
+    background: #fff5f9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.2s;
+    font-size: 37px;
+    animation: hadiahNaik 2s ease-in-out infinite;
+}
+
+.gift:nth-child(2) {
+    animation-delay: 0.25s;
+}
+
+.gift:nth-child(3) {
+    animation-delay: 0.5s;
+}
+
+.gift:hover {
+    transform: translateY(-7px) rotate(-3deg);
+    background: #ffe4ef;
+}
+
+.gift span {
+    font-size: 12px;
+    font-weight: bold;
+    color: #b65e88;
+    margin-top: 5px;
+}
+
+/* SURAT */
+
+.letter {
+    display: none;
+    margin-top: 20px;
+    padding: 18px;
+    text-align: left;
+    border: 2px dashed #f2a6c5;
+    border-radius: 18px;
+    background: #fff6fa;
+    animation: suratBuka 0.7s ease;
+}
+
+.letter h3 {
+    color: #d95e91;
+    text-align: center;
+}
+
+.letter p {
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.signature {
+    text-align: right;
+    color: #d95e91;
+    font-weight: bold;
+}
+
+/* PESAN */
+
+.message {
+    min-height: 25px;
+    margin: 12px 0;
+    font-weight: bold;
+    color: #dc6798;
+    font-size: 14px;
+}
+
+/* HATI TERBANG */
+
+.floating-heart {
+    position: fixed;
+    bottom: -30px;
+    z-index: 0;
+    pointer-events: none;
+    animation: hatiTerbang linear forwards;
+    opacity: 0.7;
+}
+
+.card {
+    z-index: 1;
+}
+
+/* KONFETI */
+
+.confetti {
+    position: fixed;
+    top: -20px;
+    z-index: 20;
+    pointer-events: none;
+    animation: konfetiJatuh 3s linear forwards;
+}
+
+/* ANIMASI */
+
+@keyframes cardMasuk {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.97);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes halamanMasuk {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes kucingMengambang {
+    0%, 100% {
+        transform: translateY(0) rotate(-1deg);
+    }
+    50% {
+        transform: translateY(-7px) rotate(1deg);
+    }
+}
+
+@keyframes pitaGoyang {
+    0%, 100% {
+        transform: rotate(-4deg);
+    }
+    50% {
+        transform: rotate(5deg);
+    }
+}
+
+@keyframes balonNaik {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+@keyframes hadiahNaik {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-4px);
+    }
+}
+
+@keyframes hatiTerbang {
+    from {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.7;
+    }
+    to {
+        transform: translateY(-110vh) rotate(40deg);
+        opacity: 0;
+    }
+}
+
+@keyframes konfetiJatuh {
+    to {
+        transform: translateY(110vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+@keyframes suratBuka {
+    from {
+        opacity: 0;
+        transform: scaleY(0.5);
+        transform-origin: top;
+    }
+    to {
+        opacity: 1;
+        transform: scaleY(1);
+    }
+}
+
+/* HP KECIL */
+
+@media (max-width: 360px) {
+    .card {
+        padding: 24px 14px;
+    }
+
+    h1 {
+        font-size: 23px;
+    }
+
+    .cat {
+        width: 150px;
+    }
+
+    .gift {
+        width: 75px;
+    }
+
+    button {
+        padding: 11px 15px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+    }
 }
 </style>
 </head>
@@ -158,185 +491,661 @@ button:active {
 
 <div class="card">
 
-  <section id="halaman1">
-    <div class="emoji">🎂</div>
-    <h1>HAPPY BIRTHDAY!</h1>
-    <h2>KHANIA 🎀</h2>
-    <p>
-      Selamat ulang tahun manusia pendek! 😭💗
-      <br>
-      Ada sesuatu buat kamu nih...
-      <br>
-      Tapi harus melewati beberapa tantangan dulu.
-    </p>
-    <button onclick="pindah(2)">BUKA HADIAH 🎁</button>
-    <p class="small">⚠️ Dilarang protes sama isi hadiahnya.</p>
-  </section>
+    <!-- HALAMAN 1 -->
+    <section class="page active" id="halaman1">
 
-  <section id="halaman2" class="hidden">
-    <div class="progress"><div class="bar" id="bar"></div></div>
-    <h2>LEVEL 1 🧠</h2>
-    <div class="emoji">🎈</div>
-    <p>
-      Ada 3 balon. Satu meletus.
-      <br>
-      Sekarang tersisa berapa balon?
-    </p>
-    <button onclick="jawab1(false)">1 balon</button>
-    <button onclick="jawab1(true)">2 balon</button>
-    <button onclick="jawab1(false)">3 balon</button>
-    <p id="hasil1"></p>
-  </section>
+        <span class="label">♡ A LITTLE SURPRISE ♡</span>
 
-  <section id="halaman3" class="hidden">
-    <div class="progress"><div class="bar" style="width:50%"></div></div>
-    <h2>LEVEL 2 😎</h2>
-    <div class="emoji">🤔</div>
-    <p>
-      Tombol mana yang harus ditekan
-      agar bisa lanjut?
-    </p>
-    <button onclick="pindah(4)">TEKAN AKU!</button>
-    <button onclick="pesan()">JANGAN AKU</button>
-    <p id="hasil2"></p>
-  </section>
+        <div class="cat-slot" data-mood="happy"></div>
 
-  <section id="halaman4" class="hidden">
-    <div class="progress"><div class="bar" style="width:75%"></div></div>
-    <h2>LEVEL 3 🎁</h2>
-    <p>Pilih satu hadiah. Jangan asal pilih, ya!</p>
-    <div>
-      <span class="gift" onclick="pilih('A')">🎁</span>
-      <span class="gift" onclick="pilih('B')">🎀</span>
-      <span class="gift" onclick="pilih('C')">🧸</span>
-    </div>
-    <p id="hasil3">Pilih hadiah A, B, atau C!</p>
-  </section>
+        <div style="font-size: 42px;">🎂</div>
 
-  <section id="halaman5" class="hidden">
-    <div class="emoji">🥳</div>
-    <h1>SELAMAT KHANIA!</h1>
-    <p>
-      KAMU BERHASIL MENYELESAIKAN SEMUANYA!
-      <br><br>
-      Hari ini umurnya bertambah,
-      tapi tingginya masih sama. WKWKWK 😭
-      <br><br>
-      Semoga makin bahagia, sehat, dan tambah tinggi pastinya! 💗
-    </p>
-    <button onclick="bukaSurat()">BUKA PESAN RAHASIA 💌</button>
-    <div id="surat" class="hidden">
-      <h2>💌 Buat Khania</h2>
-      Selamat ulang tahun, Khania!
+        <h1>Happy Birthday!</h1>
 
-      Semoga semua hal baik datang ke hidup kamu.
-      Semoga hari-hari kamu dipenuhi kebahagiaan,
-      banyak rezeki, dan makin banyak alasan buat ketawa.
+        <h2>Untuk Khania 🎀</h2>
 
-    
-      Jangan lupa bahagia, jangan lupa istirahat,
-      dan jangan lupa tambah tinggi! WKWKWK 😭🎀
+        <p>
+            Selamat ulang tahun, manusia pendek! 💗
+            <br>
+            Hari ini kamu resmi naik level.
+            Sayangnya, tinggi badan belum tentu ikut naik.
+        </p>
 
-      Sekali lagi, happy birthday! 🥳💗
-    </div>
-    <p class="small">Dibuat khusus buat manusia pendek 🎀</p>
-    <button onclick="ulang()">ULANGI DARI AWAL 🔄</button>
-  </section>
+        <div class="progress-wrap">
+            <div class="progress" id="progress1" style="width:0%"></div>
+        </div>
+
+        <p class="small">Ada sesuatu yang sudah disiapkan buat kamu...</p>
+
+        <button onclick="pindah(2)">
+            Buka kejutan 💌
+        </button>
+
+    </section>
+
+
+    <!-- HALAMAN 2 -->
+    <section class="page" id="halaman2">
+
+        <span class="label">LEVEL 1 · THE BALLOON TEST</span>
+
+        <div class="cat-slot" data-mood="curious"></div>
+
+        <h2>🎈 Pertanyaan Penting!</h2>
+
+        <p>
+            Khania, kalau ulang tahun dapat kue,
+            kamu dapat apa?
+        </p>
+
+        <div class="balloons">
+            <div class="balloon" onclick="jawab1(false)">🎈</div>
+            <div class="balloon" onclick="jawab1(true)">🎈</div>
+            <div class="balloon" onclick="jawab1(false)">🎈</div>
+        </div>
+
+        <p class="small">
+            Petunjuk: bukan utang, bukan tugas sekolah.
+        </p>
+
+        <div class="message" id="pesan1"></div>
+
+        <div class="progress-wrap">
+            <div class="progress" id="progress2" style="width:25%"></div>
+        </div>
+
+        <button class="secondary" onclick="pindah(1)">
+            Kembali
+        </button>
+
+    </section>
+
+
+    <!-- HALAMAN 3 -->
+    <section class="page" id="halaman3">
+
+        <span class="label">LEVEL 2 · DON'T TRUST THE BUTTON</span>
+
+        <div class="cat-slot" data-mood="sly"></div>
+
+        <h2>💗 Pilih Tombol!</h2>
+
+        <p>
+            Salah satu tombol ini bisa membawa kamu
+            ke kejutan berikutnya.
+        </p>
+
+        <p class="small">
+            Kucingnya saja sudah tahu jawabannya.
+        </p>
+
+        <div style="margin: 22px 0;">
+            <button onclick="pindah(4)">
+                TEKAN AKU! 💗
+            </button>
+
+            <button class="secondary" onclick="pesan()">
+                JANGAN AKU 🙈
+            </button>
+        </div>
+
+        <div class="message" id="pesan2"></div>
+
+        <div class="progress-wrap">
+            <div class="progress" style="width:50%"></div>
+        </div>
+
+        <button class="secondary" onclick="pindah(2)">
+            Kembali
+        </button>
+
+    </section>
+
+
+    <!-- HALAMAN 4 -->
+    <section class="page" id="halaman4">
+
+        <span class="label">LEVEL 3 · PICK A GIFT</span>
+
+        <div class="cat-slot" data-mood="excited"></div>
+
+        <h2>🎁 Pilih Hadiahmu!</h2>
+
+        <p>
+            Ada tiga hadiah.
+            Tapi cuma satu yang benar-benar spesial.
+        </p>
+
+        <div class="gifts">
+
+            <div class="gift" onclick="pilih('A')">
+                🎁
+                <span>Hadiah A</span>
+            </div>
+
+            <div class="gift" onclick="pilih('B')">
+                🎀
+                <span>Hadiah B</span>
+            </div>
+
+            <div class="gift" onclick="pilih('C')">
+                💝
+                <span>Hadiah C</span>
+            </div>
+
+        </div>
+
+        <div class="message" id="pesan3"></div>
+
+        <div class="progress-wrap">
+            <div class="progress" style="width:75%"></div>
+        </div>
+
+        <button class="secondary" onclick="pindah(3)">
+            Kembali
+        </button>
+
+    </section>
+
+
+    <!-- HALAMAN 5 -->
+    <section class="page" id="halaman5">
+
+        <span class="label">♡ LEVEL COMPLETED ♡</span>
+
+        <div class="cat-slot" data-mood="love"></div>
+
+        <h1>Yeay! Berhasil! 🎉</h1>
+
+        <h2>Happy Birthday, Khania! 💗</h2>
+
+        <p>
+            Selamat bertambah usia!
+            Semoga hari-harimu dipenuhi kebahagiaan,
+            kesehatan, dan hal-hal baik.
+        </p>
+
+        <p>
+            Semoga semua impianmu pelan-pelan jadi nyata.
+            Jangan lupa bahagia, jangan kebanyakan overthinking,
+            dan jangan lupa sama yang bikin website ini. 😌
+        </p>
+
+        <div style="font-size: 30px; margin: 10px;">
+            🎂 💗 🎀
+        </div>
+
+        <button onclick="bukaSurat()">
+            Buka surat rahasia 💌
+        </button>
+
+        <div class="letter" id="surat">
+
+            <h3>💌 A Little Letter for You</h3>
+
+            <p>
+                Hai, Khania! 💗
+            </p>
+
+            <p>
+                Selamat ulang tahun, ya!
+                Semoga di usia yang baru ini kamu selalu
+                diberikan kesehatan, kebahagiaan, dan
+                banyak alasan untuk tersenyum.
+            </p>
+
+            <p>
+                Semoga hal-hal yang sedang kamu usahakan
+                bisa berjalan dengan baik.
+                Kalau ada hari yang terasa berat,
+                semoga kamu selalu menemukan alasan
+                untuk tetap semangat.
+            </p>
+
+            <p>
+                Terima kasih sudah menjadi dirimu sendiri.
+                Tetap jadi Khania yang ceria,
+                tetap jadi orang yang menyenangkan,
+                dan jangan lupa jaga diri baik-baik.
+            </p>
+
+            <p>
+                Oh iya, semoga tahun ini tinggi badanmu
+                dapat pembaruan sistem juga. 🤏🏻😂
+            </p>
+
+            <p>
+                Pokoknya, semoga banyak hal baik datang
+                ke hidupmu. Kamu pantas mendapatkan
+                hari yang menyenangkan.
+            </p>
+
+            <p class="signature">
+                From someone who made this for you ♡
+            </p>
+
+        </div>
+
+        <br>
+
+        <button class="secondary" onclick="ulang()">
+            Ulangi dari awal ↻
+        </button>
+
+    </section>
 
 </div>
 
+
 <script>
-function pindah(n) {
-  document.querySelectorAll("section").forEach(function(s) {
-    s.classList.add("hidden");
-  });
 
-  const halaman = document.getElementById("halaman" + n);
+/* GAMBAR KUCING CHIBI DIBUAT LANGSUNG DENGAN SVG */
 
-  if (halaman) {
-    halaman.classList.remove("hidden");
-  } else {
-    alert("Halaman " + n + " tidak ditemukan!");
-  }
+function gambarKucing(mood) {
 
-  if (n === 2) {
-    document.getElementById("bar").style.width = "25%";
-  }
+    let mata = `
+        <ellipse class="eye" cx="73" cy="87" rx="5" ry="7"/>
+        <ellipse class="eye" cx="125" cy="87" rx="5" ry="7"/>
+    `;
+
+    let mulut = `
+        <path class="mouth" d="M94 101 Q100 108 106 101"/>
+        <path class="mouth" d="M100 105 L100 109"/>
+    `;
+
+    if (mood === "happy" || mood === "love") {
+        mata = `
+            <path class="mouth" d="M65 89 Q73 80 81 89"
+                stroke-width="3"/>
+            <path class="mouth" d="M117 89 Q125 80 133 89"
+                stroke-width="3"/>
+        `;
+
+        mulut = `
+            <path class="mouth" d="M92 101 Q100 113 108 101"/>
+        `;
+    }
+
+    if (mood === "curious") {
+        mata = `
+            <ellipse class="eye" cx="73" cy="87" rx="6" ry="8"/>
+            <ellipse class="eye" cx="125" cy="87" rx="4" ry="6"/>
+        `;
+
+        mulut = `
+            <ellipse cx="100" cy="105" rx="4" ry="5"
+                fill="#87576d"/>
+        `;
+    }
+
+    if (mood === "sly") {
+        mata = `
+            <path class="mouth" d="M65 87 Q73 82 81 87"
+                stroke-width="3"/>
+            <ellipse class="eye" cx="125" cy="87" rx="5" ry="7"/>
+        `;
+
+        mulut = `
+            <path class="mouth" d="M93 104 Q102 108 109 100"/>
+        `;
+    }
+
+    if (mood === "excited") {
+        mata = `
+            <circle class="eye" cx="73" cy="87" r="6"/>
+            <circle class="eye" cx="125" cy="87" r="6"/>
+            <circle cx="74" cy="85" r="2" fill="white"/>
+            <circle cx="126" cy="85" r="2" fill="white"/>
+        `;
+
+        mulut = `
+            <ellipse cx="100" cy="105" rx="7" ry="8"
+                fill="#87576d"/>
+        `;
+    }
+
+    if (mood === "love") {
+        mata = `
+            <path d="M65 86
+                C60 78 70 75 73 83
+                C76 75 86 78 81 86
+                L73 94 Z"
+                fill="#ef6b9f"/>
+
+            <path d="M117 86
+                C112 78 122 75 125 83
+                C128 75 138 78 133 86
+                L125 94 Z"
+                fill="#ef6b9f"/>
+        `;
+
+        mulut = `
+            <path class="mouth" d="M92 101 Q100 113 108 101"/>
+        `;
+    }
+
+    return `
+    <svg class="cat" viewBox="0 0 200 175"
+         xmlns="http://www.w3.org/2000/svg"
+         role="img" aria-label="Kucing putih chibi dengan pita pink">
+
+        <!-- Telinga -->
+        <path d="M39 57 L25 12 Q23 4 32 12 L70 39 Z"
+            fill="#fff" stroke="#e8cbd9" stroke-width="2"/>
+
+        <path d="M44 43 L34 23 L57 42 Z"
+            fill="#ffc5da"/>
+
+        <path d="M127 39 L165 12 Q174 5 172 15 L160 62 Z"
+            fill="#fff" stroke="#e8cbd9" stroke-width="2"/>
+
+        <path d="M141 42 L163 23 L154 47 Z"
+            fill="#ffc5da"/>
+
+        <!-- Badan mungil -->
+        <ellipse class="body" cx="100" cy="143"
+            rx="40" ry="27"/>
+
+        <!-- Kaki -->
+        <ellipse class="body" cx="79" cy="158"
+            rx="17" ry="9"/>
+
+        <ellipse class="body" cx="121" cy="158"
+            rx="17" ry="9"/>
+
+        <!-- Kepala -->
+        <path class="body"
+            d="M36 78
+               C36 48 62 34 100 34
+               C138 34 164 48 164 78
+               C164 112 139 130 100 130
+               C61 130 36 112 36 78 Z"/>
+
+        <!-- Pipi -->
+        <ellipse class="cheek" cx="57" cy="101"
+            rx="13" ry="7"/>
+
+        <ellipse class="cheek" cx="143" cy="101"
+            rx="13" ry="7"/>
+
+        <!-- Mata -->
+        ${mata}
+
+        <!-- Hidung -->
+        <path d="M96 97 Q100 94 104 97
+                 Q103 102 100 102 Q97 102 96 97"
+            fill="#f28bad"/>
+
+        <!-- Mulut -->
+        ${mulut}
+
+        <!-- Pita pink -->
+        <g class="bow">
+            <path d="M140 33
+                     C119 8 110 25 124 36
+                     C109 49 125 59 140 41 Z"
+                fill="#ff91ba"
+                stroke="#e66a9d"
+                stroke-width="2"/>
+
+            <path d="M143 33
+                     C163 8 177 25 159 37
+                     C176 51 158 60 143 41 Z"
+                fill="#ffb1cf"
+                stroke="#e66a9d"
+                stroke-width="2"/>
+
+            <circle cx="141" cy="37" r="7"
+                fill="#f36f9f"
+                stroke="#e66a9d"
+                stroke-width="2"/>
+
+            <circle cx="139" cy="35" r="2"
+                fill="#ffe6f0"/>
+        </g>
+
+        <!-- Hiasan kecil -->
+        <path d="M22 83 L26 89 L33 90 L27 95 L28 102
+                 L22 98 L16 102 L17 95 L11 90 L18 89 Z"
+            fill="#ffd2e4"/>
+
+        <path d="M174 112 L177 117 L183 118 L178 122
+                 L179 128 L174 125 L169 128 L170 122
+                 L165 118 L171 117 Z"
+            fill="#e7d9ff"/>
+
+    </svg>
+    `;
 }
+
+
+/* MASUKKAN KUCING KE SETIAP HALAMAN */
+
+document.querySelectorAll(".cat-slot").forEach(function(slot) {
+    const mood = slot.dataset.mood || "happy";
+    slot.innerHTML = gambarKucing(mood);
+
+    const svg = slot.querySelector(".cat");
+
+    if (slot.dataset.mood === "love") {
+        svg.classList.add("cat-big");
+    }
+
+    if (slot.dataset.mood === "curious") {
+        svg.classList.add("cat-small");
+    }
+});
+
+
+/* PINDAH HALAMAN */
+
+function pindah(nomor) {
+
+    document.querySelectorAll(".page").forEach(function(page) {
+        page.classList.remove("active");
+    });
+
+    const tujuan = document.getElementById("halaman" + nomor);
+
+    if (tujuan) {
+        tujuan.classList.add("active");
+    }
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+
+
+/* LEVEL 1: BALON */
+
+let level1Selesai = false;
 
 function jawab1(benar) {
-  const hasil = document.getElementById("hasil1");
 
-  if (benar) {
-    hasil.innerHTML = "BENAR! 🥳 Pinter juga lu. Lanjut ke Level 2!";
+    if (level1Selesai) return;
 
-    setTimeout(function() {
-      pindah(3);
-    }, 1200);
+    const pesan = document.getElementById("pesan1");
 
-  } else {
-    hasil.innerHTML = "WKWKWK SALAH 😭 Coba lagi!";
-  }
-  }
-function pesan() {
-  document.getElementById("hasil2").innerHTML =
-    "WKWKWK udah dibilang jangan ditekan 😭";
+    if (benar) {
+
+        level1Selesai = true;
+
+        pesan.innerHTML =
+            "Pinter juga kamu! 🎉 Jawabannya: kebahagiaan!";
+
+        document.getElementById("progress2").style.width = "40%";
+
+        setTimeout(function() {
+            pindah(3);
+        }, 1700);
+
+    } else {
+
+        pesan.innerHTML =
+            "Yah, salah! Coba balon yang lain, Khania! 😂";
+
+    }
 }
+
+
+/* LEVEL 2: TOMBOL JEBakan */
+
+function pesan() {
+
+    const pesan2 = document.getElementById("pesan2");
+
+    pesan2.innerHTML =
+        "Lah, malah dipencet yang jangan! Coba lagi 😂";
+
+}
+
+
+/* LEVEL 3: HADIAH */
+
+let hadiahSelesai = false;
 
 function pilih(hadiah) {
-  if (hadiah === "B") {
-    document.getElementById("hasil3").innerHTML =
-      "YEAAY! HADIAHNYA MILIK KAMU! 🎉";
-    setTimeout(() => {
-      pindah(5);
-      konfeti();
-    }, 1300);
-  } else {
-    document.getElementById("hasil3").innerHTML =
-      "Yah, belum beruntung 😭 Coba hadiah yang lain!";
-  }
+
+    if (hadiahSelesai) return;
+
+    const pesan3 = document.getElementById("pesan3");
+
+    if (hadiah === "B") {
+
+        hadiahSelesai = true;
+
+        pesan3.innerHTML =
+            "Yey! Kamu dapat hadiah spesial! 🎀💗";
+
+        document.querySelector("#halaman4 .progress").style.width =
+            "100%";
+
+        konfeti();
+
+        setTimeout(function() {
+            pindah(5);
+        }, 1700);
+
+    } else {
+
+        if (hadiah === "A") {
+            pesan3.innerHTML =
+                "Isinya angin, Khania! Coba lagi 😂";
+        } else {
+            pesan3.innerHTML =
+                "Hampir! Tapi bukan yang ini. Coba lagi 💗";
+        }
+
+    }
 }
+
+
+/* BUKA SURAT */
 
 function bukaSurat() {
-  document.getElementById("surat").classList.toggle("hidden");
-  konfeti();
+
+    const surat = document.getElementById("surat");
+
+    surat.style.display = "block";
+
+    surat.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest"
+    });
+
+    konfeti();
 }
+
+
+/* ULANG DARI AWAL */
 
 function ulang() {
-  document.getElementById("hasil1").innerHTML = "";
-  document.getElementById("hasil2").innerHTML = "";
-  document.getElementById("hasil3").innerHTML =
-    "Pilih hadiah A, B, atau C!";
-  document.getElementById("surat").classList.add("hidden");
-  pindah(1);
+
+    level1Selesai = false;
+    hadiahSelesai = false;
+
+    document.getElementById("pesan1").innerHTML = "";
+    document.getElementById("pesan2").innerHTML = "";
+    document.getElementById("pesan3").innerHTML = "";
+
+    document.getElementById("surat").style.display = "none";
+
+    document.getElementById("progress2").style.width = "25%";
+
+    document.querySelector("#halaman4 .progress").style.width =
+        "75%";
+
+    pindah(1);
 }
+
+
+/* EFEK KONFETI */
 
 function konfeti() {
-  const emoji = ["🎉", "💗", "🎊", "✨", "🎈"];
 
-  for (let i = 0; i < 35; i++) {
-    const el = document.createElement("div");
-    el.className = "heart";
-    el.textContent = emoji[Math.floor(Math.random() * emoji.length)];
-    el.style.left = Math.random() * 100 + "vw";
-    el.style.animationDuration = (3 + Math.random() * 5) + "s";
-    document.body.appendChild(el);
+    const simbol = ["🎉", "💗", "🎀", "✨", "🌸", "💕"];
 
-    setTimeout(() => el.remove(), 8000);
-  }
+    for (let i = 0; i < 35; i++) {
+
+        const elemen = document.createElement("div");
+
+        elemen.className = "confetti";
+
+        elemen.textContent =
+            simbol[Math.floor(Math.random() * simbol.length)];
+
+        elemen.style.left = Math.random() * 100 + "vw";
+
+        elemen.style.fontSize =
+            (14 + Math.random() * 18) + "px";
+
+        elemen.style.animationDuration =
+            (2 + Math.random() * 2) + "s";
+
+        elemen.style.animationDelay =
+            (Math.random() * 0.8) + "s";
+
+        document.body.appendChild(elemen);
+
+        setTimeout(function() {
+            elemen.remove();
+        }, 5000);
+    }
 }
 
-setInterval(() => {
-  const el = document.createElement("div");
-  el.className = "heart";
-  el.textContent = ["💗", "✨", "🎀"][Math.floor(Math.random() * 3)];
-  el.style.left = Math.random() * 100 + "vw";
-  el.style.animationDuration = (5 + Math.random() * 4) + "s";
-  document.body.appendChild(el);
 
-  setTimeout(() => el.remove(), 9000);
-}, 1200);
+/* HATI TERBANG */
+
+setInterval(function() {
+
+    const hati = document.createElement("div");
+
+    hati.className = "floating-heart";
+
+    const simbol = ["♡", "💗", "💕", "🎀", "🌸"];
+
+    hati.textContent =
+        simbol[Math.floor(Math.random() * simbol.length)];
+
+    hati.style.left = Math.random() * 100 + "vw";
+
+    hati.style.fontSize =
+        (15 + Math.random() * 20) + "px";
+
+    hati.style.animationDuration =
+        (5 + Math.random() * 5) + "s";
+
+    document.body.appendChild(hati);
+
+    setTimeout(function() {
+        hati.remove();
+    }, 11000);
+
+}, 900);
+
 </script>
 
 </body>
-  </html>
+          </html>
