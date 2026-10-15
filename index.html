@@ -247,11 +247,17 @@ button:active {
 
 <script>
 function pindah(n) {
-  document.querySelectorAll("section").forEach(s => {
+  document.querySelectorAll("section").forEach(function(s) {
     s.classList.add("hidden");
   });
 
-  document.getElementById("halaman" + n).classList.remove("hidden");
+  const halaman = document.getElementById("halaman" + n);
+
+  if (halaman) {
+    halaman.classList.remove("hidden");
+  } else {
+    alert("Halaman " + n + " tidak ditemukan!");
+  }
 
   if (n === 2) {
     document.getElementById("bar").style.width = "25%";
